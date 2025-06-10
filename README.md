@@ -15,11 +15,6 @@ A vintage-styled stopwatch application for tracking time spent on various activi
 - **Activity Log**: Complete history of all completed activities with time spent
 - **Finish Activity**: Save completed activities to your log
 
-### 🎨 Design Features
-- **Vintage Aesthetic**: Classic, timeless design with muted colors
-- **Responsive Layout**: Works on desktop and mobile devices
-- **Simple Color Scheme**: Easy on the eyes with brown and beige tones
-- **Clean Typography**: Uses Courier New monospace font for that vintage feel
 
 ### 🔧 Additional Features
 - **Clear All**: Reset all activities and start fresh
