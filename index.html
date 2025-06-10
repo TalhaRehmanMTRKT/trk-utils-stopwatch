@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vintage Stopwatch - Activity Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Activity Stopwatch</h1>
+            <div class="current-time" id="currentTime"></div>
+            <button class="info-btn" id="infoBtn">ℹ</button>
+        </header>
+
+        <div class="main-content">
+            <div class="stopwatch-section">
+                <div class="stopwatch-display">
+                    <div class="time-display" id="timeDisplay">00:00:00</div>
+                </div>
+
+                <div class="activity-input">
+                    <input type="text" id="activityName" placeholder="Enter activity name..." maxlength="30">
+                    <button id="startActivity">Start Activity</button>
+                </div>
+
+                <div class="current-activity" id="currentActivity" style="display: none;">
+                    <p>Current Activity: <span id="currentActivityName"></span></p>
+                </div>
+
+                <div class="controls">
+                    <button id="startBtn" class="control-btn start">Start</button>
+                    <button id="pauseBtn" class="control-btn pause" disabled>Pause</button>
+                    <button id="resetBtn" class="control-btn reset">Reset</button>
+                    <button id="finishBtn" class="control-btn finish" disabled>Finish Activity</button>
+                </div>
+            </div>
+
+            <div class="activities-section">
+                <div class="activities-header">
+                    <h2>Activity Log</h2>
+                    <button id="clearAllBtn" class="clear-all-btn">Clear All</button>
+                </div>
+                <div class="activities-list" id="activitiesList">
+                    <p class="no-activities">No activities recorded yet</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Info Modal -->
+    <div class="modal" id="infoModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>About</h3>
+            <p>Developed by <strong>Talha Rehman</strong> for personal use</p>
+            <p>A vintage-styled stopwatch application for tracking time spent on various activities.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
