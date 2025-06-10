@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Courier New', monospace;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #1a1a1a;
     color: #2c2c2c;
     line-height: 1.6;
     min-height: 100vh;
@@ -25,21 +25,21 @@ header {
     position: relative;
     border-bottom: 3px solid #000;
     padding-bottom: 20px;
-    background: rgba(255, 255, 255, 0.95);
+    background: #000;
     border-radius: 15px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
 
 header h1 {
     font-size: 2.5rem;
-    color: #e74c3c;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.1);
     margin-bottom: 10px;
 }
 
 .current-time {
     font-size: 1.2rem;
-    color: #2c3e50;
+    color: #f8f9fa;
     font-weight: bold;
 }
 
