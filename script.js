@@ -26,6 +26,7 @@ class StopwatchApp {
         this.finishBtn = document.getElementById('finishBtn');
         this.activitiesList = document.getElementById('activitiesList');
         this.clearAllBtn = document.getElementById('clearAllBtn');
+        this.downloadBtn = document.getElementById('downloadBtn');
         this.infoBtn = document.getElementById('infoBtn');
         this.infoModal = document.getElementById('infoModal');
         this.closeModal = document.querySelector('.close');
@@ -38,6 +39,7 @@ class StopwatchApp {
         this.resetBtn.addEventListener('click', () => this.resetStopwatch());
         this.finishBtn.addEventListener('click', () => this.finishActivity());
         this.clearAllBtn.addEventListener('click', () => this.clearAllActivities());
+        this.downloadBtn.addEventListener('click', () => this.downloadReport());
         this.infoBtn.addEventListener('click', () => this.showInfo());
         this.closeModal.addEventListener('click', () => this.hideInfo());
         
@@ -216,6 +218,56 @@ class StopwatchApp {
     
     hideInfo() {
         this.infoModal.style.display = 'none';
+    }
+    
+    downloadReport() {
+        if (this.activities.length === 0) {
+            alert('No activities to download. Complete some activities first!');
+            return;
+        }
+        
+        const currentDate = new Date();
+        const dateString = currentDate.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        
+        const fileName = currentDate.toISOString().split('T')[0]; // YYYY-MM-DD format
+        
+        // Calculate total time spent
+        const totalSeconds = this.activities.reduce((total, activity) => total + activity.time, 0);
+        const totalTimeFormatted = this.formatTime(totalSeconds);
+        
+        // Create report content
+        let reportContent = `Activity Report - ${dateString}\n`;
+        reportContent += `${'='.repeat(50)}\n\n`;
+        
+        reportContent += `Activities Completed:\n`;
+        reportContent += `${'-'.repeat(25)}\n`;
+        
+        this.activities.forEach((activity, index) => {
+            reportContent += `${index + 1}. ${activity.name}\n`;
+            reportContent += `   Time Spent: ${activity.formattedTime}\n`;
+            reportContent += `   Date: ${activity.date}\n\n`;
+        });
+        
+        reportContent += `${'='.repeat(50)}\n`;
+        reportContent += `Total Activities: ${this.activities.length}\n`;
+        reportContent += `Total Time Spent: ${totalTimeFormatted}\n`;
+        reportContent += `Report Generated: ${currentDate.toLocaleString()}\n`;
+        reportContent += `${'='.repeat(50)}\n`;
+        
+        // Create and download file
+        const blob = new Blob([reportContent], { type: 'text/plain' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `activity-report-${fileName}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
     }
 }
 
